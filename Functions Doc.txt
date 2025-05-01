@@ -1,0 +1,29 @@
+Card Values:
+int CardValue
+String CardSuite 
+image CardImage 
+
+Functions:
+Setters:
+CardNumValue
+CardSuite
+CardImage
+
+Getters:
+GetCardNumValue
+GetCardSuite
+GetCardImage
+
+Deck Values:
+List<string> Card[52] Game Deck
+
+Functions:
+CreateDeck
+SendToBottom
+
+
+Room Values:
+
+
+Functions:
+
