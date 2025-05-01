@@ -1,4 +1,5 @@
-Card Values:
+Card 
+Values:
 int CardValue
 String CardSuite 
 image CardImage 
@@ -14,7 +15,8 @@ GetCardNumValue
 GetCardSuite
 GetCardImage
 
-Deck Values:
+Deck 
+Values:
 List<string> Card[52] Game Deck
 
 Functions:
@@ -22,7 +24,8 @@ CreateDeck
 SendToBottom
 
 
-Room Values:
+Room 
+Values:
 
 
 Functions:
