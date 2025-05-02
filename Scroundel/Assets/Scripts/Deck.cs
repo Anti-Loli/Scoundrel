@@ -7,7 +7,6 @@ public class Deck : MonoBehaviour
     private List<Card> cardList = new List<Card>();
     private Queue<Card> deckQueue; 
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
     {
         LoadCards();
@@ -29,7 +28,34 @@ public class Deck : MonoBehaviour
     {
         return deckQueue.Dequeue();
     }
+
+    public List<Card> FillRoom()
+    {
+        List<Card> roomList = new List<Card>();
+        Card deckDequeue; 
+
+        for(int i = 0; i< 4; i++)
+        {
+            deckDequeue = deckQueue.Dequeue();
+            roomList.Add(deckDequeue);
+        }
+
+        return roomList;
+    }
     
+    public List<Card> NextRoom(List<Card> roomList)
+    {
+        Card deckDequeue; 
+
+        for(int i = 0; i< 3; i++)
+        {
+            deckDequeue = deckQueue.Dequeue();
+            roomList.Add(deckDequeue);
+        }
+
+        return roomList;
+    }
+
     public void SendToBottom(Card card)
     {
         deckQueue.Enqueue(card); 
