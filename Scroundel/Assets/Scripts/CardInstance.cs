@@ -5,17 +5,10 @@ public class CardInstance : MonoBehaviour
 {
     public Card template; 
 
-    public CardInstance (Card data)
+    public void Init (Card data)
     {
         template = data;
-    }
-
-    void Start()
-    {
-        gameObject.GetComponent<SpriteRenderer>().sprite = template.cardArt;   
-        Debug.Log("Card Suite: " + template.suite);
-        Debug.Log("Card Value: " + template.value);
-
+        GetComponent<SpriteRenderer>().sprite = data.cardArt;
     }
 
     public CardSuite GetCardSuite()

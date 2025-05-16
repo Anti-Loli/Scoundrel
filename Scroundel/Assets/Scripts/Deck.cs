@@ -16,7 +16,7 @@ public class Deck : MonoBehaviour
 
     void Start()
     {
-        PrintDeck();
+       // PrintDeck();
     }
 
     void LoadCards()
@@ -29,9 +29,8 @@ public class Deck : MonoBehaviour
         return deckQueue.Dequeue();
     }
 
-    public List<Card> FillRoom()
+    public List<Card> FillRoom(List<Card> roomList)
     {
-        List<Card> roomList = new List<Card>();
         Card deckDequeue; 
 
         for(int i = 0; i< 4; i++)

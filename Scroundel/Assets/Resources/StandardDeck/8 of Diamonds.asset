@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39b258ee3820f9b4594bcd07953e7c2f, type: 3}
   m_Name: 8 of Diamonds
   m_EditorClassIdentifier: 
-  value: 2
+  value: 8
   suite: 1
-  cardArt: {fileID: -1197542903601907069, guid: 38895b711048d9548872c4d1224ef74c, type: 3}
+  cardArt: {fileID: -6881395052639258602, guid: c60c63bebcd67294c80d527fa8a24e0c, type: 3}

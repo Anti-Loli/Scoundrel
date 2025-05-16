@@ -4,17 +4,51 @@ using UnityEngine;
 
 public class Room : MonoBehaviour
 {
+    [SerializeField] private Deck deck;
+    [SerializeField] List<Vector2> spawnPoints = new List<Vector2>();
+    [SerializeField] private GameObject cardPrefab;
 
-    private bool skippedRoom; //bool check if player skipped previous room
-    private bool usedPotion; //bool to check if player used a health potion in the current room
-    private bool usedWeapon; //bool to check if player used thier weapon in current room
-    private int usedWeaponValue; //int value to track value of first monster player fought
-
+    private  List<Card> cardList = new List<Card>(); //card data of the current room
     private  List<CardInstance> roomList = new List<CardInstance>(); //card list for current room
-    private  List<Card> discardPile = new List<Card>();//card list for the discard pile
-    private  List<Card> slayedMonsters = new List<Card>();//card list for monsters slayed using current weapon
 
-    private CardInstance currentWeapon;//card object for the players current weapon
+    void Awake()
+    {
+        if(deck == null)
+        {
+            Debug.Log("Deck component not found after Inspector assignment");
+            deck = GameObject.Find("Deck").GetComponent<Deck>();
 
+             if(deck == null)
+            {
+                Debug.Log("Deck component not found after Getcomponent");
+            }
+        }
+    }
 
+    void Start()
+    {
+        deck.FillRoom(cardList);
+        SpawnRoom();
+    }
+
+    void Update()
+    {
+        
+    }
+
+    void SpawnRoom()
+    {
+        for(int i = 0; i < cardList.Count; i++)
+        {
+            Vector2 spawnPos = (i < spawnPoints.Count) ? spawnPoints[i] : Vector2.zero;
+
+            GameObject card = Instantiate(cardPrefab, spawnPos, Quaternion.identity);
+
+            CardInstance cardInstance = card.GetComponent<CardInstance>();
+
+            cardInstance.Init(cardList[i]);
+
+            roomList.Add(cardInstance);
+        }
+    }
 }
