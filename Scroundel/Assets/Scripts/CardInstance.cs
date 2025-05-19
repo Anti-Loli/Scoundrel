@@ -7,7 +7,7 @@ public class CardInstance : MonoBehaviour
 {
     public Card template;
 
-    public event Action<CardInstance> DiscardCard;
+    public event Action<CardInstance> PlayCard;
 
     public void Init(Card data)
     {
@@ -27,7 +27,7 @@ public class CardInstance : MonoBehaviour
 
     void OnMouseDown()
     {
-        DiscardCard.Invoke(this);
+        PlayCard.Invoke(this);
         Destroy(gameObject);
     }
 }

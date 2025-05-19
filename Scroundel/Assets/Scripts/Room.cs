@@ -49,7 +49,7 @@ public class Room : MonoBehaviour
 
             cardInstance.Init(cardList[i]);
 
-            cardInstance.DiscardCard += DiscardCard;
+            cardInstance.PlayCard += DiscardCard;
 
             roomList.Add(cardInstance);
         }
@@ -73,4 +73,42 @@ public class Room : MonoBehaviour
         //     Debug.Log("Cardlist card " + i + ": " + cardList[i].suite + " " + cardList[i].value);
         // }
     }
+
+    public void SkipRoom()
+    {
+        deck.SendRoomToBottom(cardList);
+
+        // for (int i = 0; i < cardList.Count; i++)
+        // {
+        //     Debug.Log("Cardlist card " + i + ": " + cardList[i].suite + " " + cardList[i].value);
+        // }
+
+        int cardListCurrentInt = cardList.Count;
+
+        for (int i = 0; i < cardListCurrentInt; i++)
+        {
+            roomList.RemoveAt(0);
+            cardList.RemoveAt(0);
+        }
+
+        
+        // Debug.Log("After removeal: ");
+
+        // for (int i = 0; i < cardList.Count; i++)
+        // {
+        //     Debug.Log("Cardlist card " + i + ": " + cardList[i].suite + " " + cardList[i].value);
+        // }
+        
+        deck.FillRoom(cardList);
+
+        GameObject[] sceneInstaces = GameObject.FindGameObjectsWithTag("CardInstance");
+
+        for (int i = 0; i < sceneInstaces.Length; i++)
+        {
+            Destroy(sceneInstaces[i]);
+        }        
+
+        SpawnRoom();
+    }
+
 }
